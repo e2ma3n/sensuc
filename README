@@ -1,0 +1,83 @@
+Programming and idea by : E2MA3N [Iman Homayouni]
+Github : https://github.com/e2ma3n
+Email : e2ma3n@Gmail.com
+Website : http://OSLearn.ir
+License : GPL v3.0
+sensuc v1.0 [ sending alert when user was logged successfully on system ]
+
+Description :
+This program Written by E2MA3N for monitoring users, when user logged into server or use 'su' command, This program sending alert to sysadmin.
+
+
+Dependencies :
+	1. cat
+	2. mailx
+	3. grep
+	4. date
+	5. sed
+	6. curl
+	7. sleep
+	8. awk
+	9. whoami
+	10. pgrep
+	11. kill
+	12. chmod
+	13. cp
+
+
+Install sensuc v1.0 :
+	1. chmod +x install.sh
+	2. sudo ./install.sh -i
+
+
+Check dependencies :
+	1. chmod +x install.sh
+	2. sudo ./install.sh -c
+
+
+Install mailx in debian :
+	1. sudo apt-get install heirloom-mailx
+
+
+Istall mailx in centos :
+	1. sudo yum install mailx
+
+
+Testing program :
+	1. sudo sensuc --test_mail # plaese see varbose
+	2. sudo sensuc --test_sms # please see verbose
+
+
+Usage sensuc v1.0 :
+	1. sudo sensuc --status # for check program's status
+	2. sudo sensuc --start # for start program in background
+	3. sudo sensuc --stop # for stop program service
+
+
+Uninstall sensuc v1.0 :
+	1. rm -rf /opt/sensuc_v1/
+	2. rm -f /usr/bin/sensuc
+	3. remove sensuc-core1.sh from /etc/profile
+
+
+Notes :
+	1. You have two choises : start manually or starting up script as a daemon
+	2. You should run program as root
+	3. You should edit config file
+	4. This program now is compatible with sms[dot]ir panel
+
+
+Testes sensuc v1.0 in :
+	1. Debian 8.1.0 64bit netinst, 3.16.0-4-amd64
+	2. Centos 6.3 32bit minimal, 2.6.32-279.el6.i686
+	3. Ubuntu 14.04 LTS - desktop
+
+
+CentOS bug - mailx :
+	Error : Missing "nss-config-dir" variable.
+	Patch : add '-S nss-config-dir=/etc/pki/nssdb/' to mailx's options
+
+
+Disable send-mail or send-sms :
+	1. open /opt/sensuc_v1/sensuc-core1.sh
+	2. delete send-mail or send-sms from line 48 to 49
