@@ -67,7 +67,7 @@ Notes :
 	4. This program now is compatible with sms[dot]ir panel
 
 
-Testes sensuc v1.0 in :
+Tested sensuc v1.0 in :
 	1. Debian 8.1.0 64bit netinst, 3.16.0-4-amd64
 	2. Centos 6.3 32bit minimal, 2.6.32-279.el6.i686
 	3. Ubuntu 14.04 LTS - desktop
