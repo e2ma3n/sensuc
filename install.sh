@@ -26,7 +26,7 @@ function install_f {
 	sleep 1
 	[ ! -f /opt/sensuc_v1/sensuc-core1.sh ] && cp sensuc-core1.sh /opt/sensuc_v1/ && chmod 755 /opt/sensuc_v1/sensuc-core1.sh && echo '[+] sensuc-core1.sh copied' || echo '[-] Error: /opt/sensuc_v1/sensuc-core1.sh exist'
 	sleep 1
-	cat /etc/profile | grep '(/opt/sensuc_v1/sensuc-core1.sh &) &> /dev/null'
+	cat /etc/profile | grep '(/opt/sensuc_v1/sensuc-core1.sh &) &> /dev/null' &> /dev/null
 	if [ "$?" != "0" ] ; then
 		echo '(/opt/sensuc_v1/sensuc-core1.sh &) &> /dev/null' >> /etc/profile
 		echo '[+] sensuc-core1.sh added in /etc/profile'
