@@ -55,7 +55,7 @@ Usage sensuc v1.5 :
 
 
 Uninstall sensuc v1.5 :
-	1. rm -rf /opt/sensuc_v1/
+	1. rm -rf /opt/sensuc_v1.5/
 	2. rm -f /usr/bin/sensuc
 	3. remove sensuc-core1.sh from /etc/profile
 
@@ -77,5 +77,5 @@ CentOS bug - mailx :
 
 
 Disable send-mail or send-sms :
-	1. open /opt/sensuc_v1/sensuc-core1.sh
+	1. open /opt/sensuc_v1.5/sensuc-core1.sh
 	2. delete send-mail or send-sms from line 48 to 49
