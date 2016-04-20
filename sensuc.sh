@@ -4,17 +4,17 @@
 # Email : e2ma3n@Gmail.com
 # Website : http://OSLearn.ir
 # License : GPL v3.0
-# sensuc v1.0 [ sending alert when user was logged successfully on system ]
+# sensuc v1.5 [ sending alert when user was logged successfully on system ]
 # ------------------------------------------------------------------------ #
 
 # check root privilege
 [ "`whoami`" != "root" ] && echo -e '[-] Please use root user or sudo' && exit 1
 
 # check config file
-[ ! -f /opt/sensuc_v1/sensuc.conf ] && echo -e "\e[91m[-]\e[0m Error: can not find config file" && exit 1
+[ ! -f /opt/sensuc_v1.5/sensuc.conf ] && echo -e "\e[91m[-]\e[0m Error: can not find config file" && exit 1
 
 # check sensuc-core.sh
-[ ! -f /opt/sensuc_v1/sensuc-core2.sh ] && echo -e "\e[91m[-]\e[0m Error: can not find sensuc-core2.sh" && exit 1
+[ ! -f /opt/sensuc_v1.5/sensuc-core2.sh ] && echo -e "\e[91m[-]\e[0m Error: can not find sensuc-core2.sh" && exit 1
 
 # help function
 function usage_f {
@@ -31,7 +31,7 @@ function start_f {
 	if [ "$?" = "0" ] ; then
 		echo -e "\e[91m[-]\e[0m Error: sensuc service is active"
 	else
-		/opt/sensuc_v1/sensuc-core2.sh &> /dev/null &
+		/opt/sensuc_v1.5/sensuc-core2.sh &> /dev/null &
 		[ "$?" = "0" ] && echo "[+] Starting sensuc ..." && sleep 2 && echo -e "\e[92m[+]\e[0m Ok" || echo -e "\e[91m[-]\e[0m Error: sensuc service not started"
 	fi
 }
@@ -51,23 +51,24 @@ function status_f {
 }
 
 function test_mail {
-	smtp_srv=`cat /opt/sensuc_v1/sensuc.conf | head -n 9 | tail -n 1 | cut -d = -f 2`
-	smtp_user=`cat /opt/sensuc_v1/sensuc.conf | head -n 11 | tail -n 1 | cut -d = -f 2`
-	smtp_pass=`cat /opt/sensuc_v1/sensuc.conf | head -n 13 | tail -n 1 | cut -d = -f 2`
-	mail_to=`cat /opt/sensuc_v1/sensuc.conf | head -n 15 | tail -n 1 | cut -d = -f 2`
-	IP=`cat /opt/sensuc_v1/sensuc.conf | head -n 17 | tail -n 1 | cut -d = -f 2`
+	smtp_srv=`cat /opt/sensuc_v1.5/sensuc.conf | head -n 9 | tail -n 1 | cut -d = -f 2`
+	smtp_user=`cat /opt/sensuc_v1.5/sensuc.conf | head -n 11 | tail -n 1 | cut -d = -f 2`
+	smtp_pass=`cat /opt/sensuc_v1.5/sensuc.conf | head -n 13 | tail -n 1 | cut -d = -f 2`
+	mail_to=`cat /opt/sensuc_v1.5/sensuc.conf | head -n 15 | tail -n 1 | cut -d = -f 2`
+	IP=`cat /opt/sensuc_v1.5/sensuc.conf | head -n 17 | tail -n 1 | cut -d = -f 2`
+	t=`echo -n 'DATE: 20' ; date '+%y/%m/%d TIME: %H:%M:%S'`
 
-	text="sensuc testing - $IP"
-	echo "$text" | mailx -v -r "$smtp_user" -s "sensuc - testing" -S smtp=$smtp_srv -S smtp-use-starttls -S smtp-auth=login -S smtp-auth-user=$smtp_user -S smtp-auth-password=$smtp_pass -S ssl-verify=ignore -S nss-config-dir=/etc/pki/nssdb/ $mail_to
+	text="Sensuc Testing - $IP"
+	echo "$text" | mailx -v -r "$smtp_user" -s "Sensuc - $t" -S smtp=$smtp_srv -S smtp-use-starttls -S smtp-auth=login -S smtp-auth-user=$smtp_user -S smtp-auth-password=$smtp_pass -S ssl-verify=ignore -S nss-config-dir=/etc/pki/nssdb/ $mail_to
 }
 
 function test_sms {
-	Suser=`cat /opt/sensuc_v1/sensuc.conf | head -n 19 | tail -n 1 | cut -d = -f 2`
-	Spass=`cat /opt/sensuc_v1/sensuc.conf | head -n 21 | tail -n 1 | cut -d = -f 2`
-	Sto=`cat /opt/sensuc_v1/sensuc.conf | head -n 23 | tail -n 1 | cut -d = -f 2`
-	Sline=`cat /opt/sensuc_v1/sensuc.conf | head -n 25 | tail -n 1 | cut -d = -f 2`
+	Suser=`cat /opt/sensuc_v1.5/sensuc.conf | head -n 19 | tail -n 1 | cut -d = -f 2`
+	Spass=`cat /opt/sensuc_v1.5/sensuc.conf | head -n 21 | tail -n 1 | cut -d = -f 2`
+	Sto=`cat /opt/sensuc_v1.5/sensuc.conf | head -n 23 | tail -n 1 | cut -d = -f 2`
+	Sline=`cat /opt/sensuc_v1.5/sensuc.conf | head -n 25 | tail -n 1 | cut -d = -f 2`
 
-	msg="sensuc_testing"
+	msg="Sensuc_Testing"
 	curl "http://n.sms.ir/SendMessage.ashx?text=$msg&lineno=$Sline&to=$Sto&user=$Suser&pass=$Spass" ; echo
 }
 
