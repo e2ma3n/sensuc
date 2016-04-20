@@ -47,6 +47,12 @@ function install_f {
 	[ ! -d /opt/sensuc_v1.5/log/ ] && mkdir -p /opt/sensuc_v1.5/log/ && echo '[+] Log Directory created' || echo '[-] /opt/sensuc_v1.5/log/ exist'
 	sleep 1
 	[ ! -f /opt/sensuc_v1.5/README ] && cp README /opt/sensuc_v1.5/ ; echo '[+] Please see README'
+	sleep 0.5
+	echo "[+] you have two choises : start manually or Starting up Script As a daemon" ; sleep 0.5
+	echo "[!] Warning: You should run program as root" ; sleep 0.5
+	echo "[!] Warning: You should edit config file" ; sleep 0.5
+	echo "[+] this program now is compatible with sms[dot]ir panel" ; sleep 0.5
+	echo "[+] Done"
 }
 
 # uninstall program from system
@@ -62,6 +68,7 @@ function check_f {
 	echo '[+] check dependencies on system:  '
 	for program in cat mailx grep date sed curl sleep awk whoami pgrep kill chmod cp
 	do
+		sleep 0.5
 		if [ ! -z `which $program 2> /dev/null` ] ; then
 			echo "[+] $program found"
 		else
