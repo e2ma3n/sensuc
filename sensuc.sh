@@ -56,7 +56,7 @@ function test_mail {
 	smtp_pass=`cat /opt/sensuc_v1.5/sensuc.conf | head -n 13 | tail -n 1 | cut -d = -f 2`
 	mail_to=`cat /opt/sensuc_v1.5/sensuc.conf | head -n 15 | tail -n 1 | cut -d = -f 2`
 	IP=`cat /opt/sensuc_v1.5/sensuc.conf | head -n 17 | tail -n 1 | cut -d = -f 2`
-	t=`echo -n 'DATE: 20' ; date '+%y/%m/%d TIME: %H:%M:%S'`
+	t=`echo -n '20' ; date '+%y/%m/%d'`
 
 	text="Sensuc Testing - $IP"
 	echo "$text" | mailx -v -r "$smtp_user" -s "Sensuc - $t" -S smtp=$smtp_srv -S smtp-use-starttls -S smtp-auth=login -S smtp-auth-user=$smtp_user -S smtp-auth-password=$smtp_pass -S ssl-verify=ignore -S nss-config-dir=/etc/pki/nssdb/ $mail_to
