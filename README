@@ -3,7 +3,7 @@ Github : https://github.com/e2ma3n
 Email : e2ma3n@Gmail.com
 Website : http://OSLearn.ir
 License : GPL v3.0
-sensuc v1.0 [ sending alert when user was logged successfully on system ]
+sensuc v1.5 [ sending alert when user was logged successfully on system ]
 
 Description :
 This program Written by E2MA3N for monitoring users, when user logged into server or use 'su' command, This program sending alert to sysadmin.
@@ -25,7 +25,7 @@ Dependencies :
 	13. cp
 
 
-Install sensuc v1.0 :
+Install sensuc v1.5 :
 	1. chmod +x install.sh
 	2. sudo ./install.sh -i
 
@@ -48,13 +48,13 @@ Testing program :
 	2. sudo sensuc --test_sms # please see verbose
 
 
-Usage sensuc v1.0 :
+Usage sensuc v1.5 :
 	1. sudo sensuc --status # for check program's status
 	2. sudo sensuc --start # for start program in background
 	3. sudo sensuc --stop # for stop program service
 
 
-Uninstall sensuc v1.0 :
+Uninstall sensuc v1.5 :
 	1. rm -rf /opt/sensuc_v1/
 	2. rm -f /usr/bin/sensuc
 	3. remove sensuc-core1.sh from /etc/profile
@@ -67,7 +67,7 @@ Notes :
 	4. This program now is compatible with sms[dot]ir panel
 
 
-Tested sensuc v1.0 in :
+Tested sensuc v1.5 in :
 	1. Debian 8.1.0 64bit netinst, 3.16.0-4-amd64
 
 
